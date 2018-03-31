@@ -140,5 +140,25 @@ glmerSet <- function(theta) glmerControl(
     calc.derivs=FALSE
 )
 
+# logic from stats::glm
+as.family <- function(family) {
 
+    if(is.character(family)) {
+
+        family <- get(family, mode = "function", envir = parent.frame(2))
+        family <- family()
+    }
+
+    if(is.function(family)) {
+
+        family <- family()
+    }
+
+    if(is.null(family$family)) {
+
+        	stop("'family' not recognized")
+    }
+
+    return(family)
+}
 
