@@ -35,16 +35,7 @@ getData <- function(object) {
     if(!is.null(newData)) return(newData)
 
     #
-    # 2nd choice: @frame for merMod, $model for lm.
-    #
-
-    # not clever enough? Breaks e.g. binomial?
-
-    #if(is(object, "merMod")) return(object@frame)
-    #if(is(object, "lm")) return(object$model)
-
-    #
-    # @nd choice: doFit inserts a whole data.frame into the call
+    # 2nd choice: doFit inserts a whole data.frame into the call
     #
 
     dataCall <- maybe(getCall)(object)$value$data
